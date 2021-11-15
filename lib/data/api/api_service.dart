@@ -16,28 +16,26 @@ class ApiService {
     if (response.statusCode == 200) {
       return RestaurantList.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load top Headlines');
+      throw Exception('Maaf Silahkan Coba Lagi');
     }
   }
 
   Future<RestaurantResult> detailRestourant(id) async {
     final response =
         await http.get(Uri.parse(baseUrll + detail + id.toString()));
-
     if (response.statusCode == 200) {
       return RestaurantResult.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load top Headlines');
+      throw Exception('Maaf Silahkan Coba Lagi');
     }
   }
 
   Future<RestaurantSearch> searchRestourant(query) async {
     final response = await http.get(Uri.parse(baseUrll + search + query));
-    print(baseUrll + search + query);
     if (response.statusCode == 200) {
       return RestaurantSearch.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load top Headlines');
+      throw Exception('Maaf Silahkan Coba Lagi');
     }
   }
 }

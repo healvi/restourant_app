@@ -5,11 +5,11 @@ import 'package:restourant_app/data/model/restourant_search_data.dart';
 enum ResultState { loading, Nodata, Hasdata, Error }
 
 class SearchProvider extends ChangeNotifier {
-  final ApiService apiService;
-  final String query;
+  late final ApiService apiService;
+  late final String query;
 
   SearchProvider({required this.apiService, required this.query}) {
-    _searchAllRestourant(query);
+    searchAllRestourant(query);
   }
 
   late RestaurantSearch _RestourantResult;
@@ -20,7 +20,7 @@ class SearchProvider extends ChangeNotifier {
   RestaurantSearch get result => _RestourantResult;
   ResultState get state => _state;
 
-  Future<dynamic> _searchAllRestourant(query) async {
+  Future<dynamic> searchAllRestourant(query) async {
     try {
       _state = ResultState.loading;
       notifyListeners();
@@ -37,7 +37,7 @@ class SearchProvider extends ChangeNotifier {
     } catch (e) {
       _state = ResultState.Error;
       notifyListeners();
-      return _message = 'Maaf Mungkin Internet anda salah';
+      return _message = "Maaf Silahkan Coba Lagi";
     }
   }
 }
