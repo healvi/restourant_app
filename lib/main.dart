@@ -7,11 +7,13 @@ import 'package:provider/provider.dart';
 import 'package:restourant_app/common/navigation.dart';
 import 'package:restourant_app/common/style.dart';
 import 'package:restourant_app/data/api/api_service.dart';
+import 'package:restourant_app/data/db/database_helper.dart';
+import 'package:restourant_app/data/db/database_provider.dart';
 import 'package:restourant_app/data/preferences/preferences_helper.dart';
 import 'package:restourant_app/provider/preferences_provider.dart';
 import 'package:restourant_app/provider/restaourant_provider.dart';
-import 'package:restourant_app/provider/restaourant_provider_detail.dart';
 import 'package:restourant_app/provider/restourent_provider_search.dart';
+import 'package:restourant_app/ui/details_restaurant.dart';
 import 'package:restourant_app/ui/restaourant_list.dart';
 import 'package:restourant_app/utils/background_service.dart';
 import 'package:restourant_app/utils/notification_helper.dart';
@@ -35,7 +37,12 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -43,13 +50,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => RestaourantProvider(apiService: ApiService()),
         ),
-        // ChangeNotifierProvider(
-        //   create: (_) =>
-        //       RestaourantProviderDetails(apiService: ApiService(), id: "1"),
-        // ),
-        // ChangeNotifierProvider(
-        //   create: (_) => SearchProvider(apiService: ApiService(), query: ""),
-        // ),
+        ChangeNotifierProvider(
+          create: (_) => SearchProvider(apiService: ApiService(), query: ""),
+        ),
         ChangeNotifierProvider(
           create: (_) => PreferencesProvider(
             preferencesHelper: PreferencesHelper(
@@ -57,6 +60,8 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        ChangeNotifierProvider(
+            create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper())),
       ],
       child: Consumer<PreferencesProvider>(builder: (context, provider, child) {
         return MaterialApp(

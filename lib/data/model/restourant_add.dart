@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'dart:ffi';
+
 class RestaurantAdd {
   RestaurantAdd({
     required this.id,
@@ -28,7 +30,7 @@ class RestaurantAdd {
         description: json["description"],
         pictureId: json["pictureId"],
         city: json["city"],
-        rating: json["rating"].toDouble(),
+        rating: json["rating"],
       );
 
   Map<String, dynamic> toJson() => {

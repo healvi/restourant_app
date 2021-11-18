@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:restourant_app/data/model/restourant_add.dart';
+
 class RestaurantResult {
   RestaurantResult({
     required this.error,
@@ -9,7 +11,7 @@ class RestaurantResult {
 
   bool error;
   String message;
-  Restaurant restaurant;
+  RestaurantAdd restaurant;
 
   factory RestaurantResult.fromRawJson(String str) =>
       RestaurantResult.fromJson(json.decode(str));
@@ -20,7 +22,7 @@ class RestaurantResult {
       RestaurantResult(
         error: json["error"],
         message: json["message"],
-        restaurant: Restaurant.fromJson(json["restaurant"]),
+        restaurant: RestaurantAdd.fromJson(json["restaurant"]),
       );
 
   Map<String, dynamic> toJson() => {

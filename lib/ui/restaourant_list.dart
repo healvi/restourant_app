@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_app/provider/restaourant_provider.dart';
 import 'package:restourant_app/ui/build_restourant_item.dart';
+import 'package:restourant_app/ui/details_restaurant.dart';
+import 'package:restourant_app/ui/favorite_page.dart';
 import 'package:restourant_app/ui/search_restourant.dart';
 import 'package:restourant_app/ui/settings_page.dart';
+import 'package:restourant_app/utils/notification_helper.dart';
 import 'package:restourant_app/widgets/platform_widget.dart';
 
 class RestourantListPage extends StatefulWidget {
@@ -13,9 +16,18 @@ class RestourantListPage extends StatefulWidget {
 }
 
 class _RestourantListPageState extends State<RestourantListPage> {
+  final NotificationHelper _notificationHelper = NotificationHelper();
   @override
   void initState() {
     super.initState();
+    _notificationHelper
+        .configureSelectNotificationSubject(DetailsRestaurant.routeName);
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
   }
 
   Widget _buildRestourant(BuildContext context) {
@@ -49,6 +61,13 @@ class _RestourantListPageState extends State<RestourantListPage> {
                   }));
                 },
                 icon: const Icon(Icons.search, color: Colors.white)),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return FavoritePage();
+                  }));
+                },
+                icon: const Icon(Icons.favorite, color: Colors.red)),
             IconButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {

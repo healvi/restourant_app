@@ -51,8 +51,7 @@ class _searchRestourantPageState extends State<searchRestourantPage> {
           preferredSize: const Size.fromHeight(50),
           child: buildAppBar(context),
         ),
-        body: ChangeNotifierProvider<SearchProvider>(
-            create: (_) => provider, child: _buildRestourant(context)));
+        body: _buildRestourant(context));
   }
 
   Widget _buildIos(BuildContext context) {
@@ -66,8 +65,7 @@ class _searchRestourantPageState extends State<searchRestourantPage> {
           ),
           transitionBetweenRoutes: false,
         ),
-        child: ChangeNotifierProvider<SearchProvider>(
-            create: (_) => provider, child: _buildRestourant(context)));
+        child: _buildRestourant(context));
   }
 
   @override

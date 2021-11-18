@@ -22,7 +22,7 @@ class SettingsPage extends StatelessWidget {
 
   Widget _buildIos(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+      navigationBar: const CupertinoNavigationBar(
         middle: Text(settingsTitle),
       ),
       child: _buildList(context),
@@ -30,12 +30,13 @@ class SettingsPage extends StatelessWidget {
   }
 
   Widget _buildList(BuildContext context) {
+    // return Center(child: Text('Makan'));
     return Consumer<PreferencesProvider>(builder: (context, provider, child) {
       return ListView(
         children: [
           Material(
             child: ListTile(
-              title: Text('Scheduling News'),
+              title: Text('Scheduling Restourant'),
               trailing: Consumer<SchedulingProvider>(
                 builder: (context, scheduled, _) {
                   return Switch.adaptive(
@@ -44,7 +45,7 @@ class SettingsPage extends StatelessWidget {
                       if (Platform.isIOS) {
                         customDialog(context);
                       } else {
-                        scheduled.scheduledNews(value);
+                        scheduled.scheduledRetourant(value);
                         provider.enableDailyNews(value);
                       }
                     },
