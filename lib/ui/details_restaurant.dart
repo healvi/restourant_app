@@ -18,9 +18,15 @@ class DetailsRestaurant extends StatefulWidget {
 class _DetailsRestaurantState extends State<DetailsRestaurant> {
   final String restourantId;
   _DetailsRestaurantState({required this.restourantId});
+
+  late RestaourantProviderDetails stateProvider;
+
   @override
   void initState() {
     super.initState();
+    stateProvider =
+        RestaourantProviderDetails(apiService: ApiService(), id: restourantId);
+    stateProvider.id = restourantId;
   }
 
   Widget _buildDetail(BuildContext context) {
