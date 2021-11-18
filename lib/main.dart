@@ -13,6 +13,7 @@ import 'package:restourant_app/data/preferences/preferences_helper.dart';
 import 'package:restourant_app/provider/preferences_provider.dart';
 import 'package:restourant_app/provider/restaourant_provider.dart';
 import 'package:restourant_app/provider/restourent_provider_search.dart';
+import 'package:restourant_app/provider/scheduling_provider.dart';
 import 'package:restourant_app/ui/details_restaurant.dart';
 import 'package:restourant_app/ui/restaourant_list.dart';
 import 'package:restourant_app/utils/background_service.dart';
@@ -52,6 +53,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (_) => SearchProvider(apiService: ApiService(), query: ""),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SchedulingProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => PreferencesProvider(

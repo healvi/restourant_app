@@ -10,8 +10,8 @@ customDialog(BuildContext context) {
       barrierDismissible: true,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: Text('Coming Soon!'),
-          content: Text('This feature will be coming soon!'),
+          title: Text('Sorry'),
+          content: Text('I ODnt have MacOs'),
           actions: [
             CupertinoDialogAction(
               child: Text('Ok'),
@@ -28,8 +28,8 @@ customDialog(BuildContext context) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Coming Soon!'),
-          content: Text('This feature will be coming soon!'),
+          title: Text('Sorry'),
+          content: Text('I ODnt have MacOs'),
           actions: [
             TextButton(
               onPressed: () {
