@@ -43,13 +43,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => RestaourantProvider(apiService: ApiService()),
         ),
-        ChangeNotifierProvider(
-          create: (_) =>
-              RestaourantProviderDetails(apiService: ApiService(), id: "1"),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => SearchProvider(apiService: ApiService(), query: ""),
-        ),
+        // ChangeNotifierProvider(
+        //   create: (_) =>
+        //       RestaourantProviderDetails(apiService: ApiService(), id: "1"),
+        // ),
+        // ChangeNotifierProvider(
+        //   create: (_) => SearchProvider(apiService: ApiService(), query: ""),
+        // ),
         ChangeNotifierProvider(
           create: (_) => PreferencesProvider(
             preferencesHelper: PreferencesHelper(
