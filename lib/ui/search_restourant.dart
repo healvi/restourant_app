@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:restourant_app/data/api/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:restourant_app/provider/restourent_provider_search.dart';
 import 'package:restourant_app/ui/build_restourant_item.dart';
@@ -28,10 +27,10 @@ class _searchRestourantPageState extends State<searchRestourantPage> {
     super.initState();
     _isSearch = false;
   }
-  var provider = SearchProvider(apiService: ApiService(), query: "");
+
   Widget _buildRestourant(BuildContext context) {
     return Consumer<SearchProvider>(builder: (context, state, _) {
-        this.stateProvider = state;
+      stateProvider = state;
       if (state.state == ResultState.loading) {
         return const Center(child: CircularProgressIndicator());
       } else if (state.state == ResultState.Hasdata) {
@@ -47,14 +46,12 @@ class _searchRestourantPageState extends State<searchRestourantPage> {
   }
 
   Widget _buildAndroid(BuildContext context) {
-
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(50),
           child: buildAppBar(context),
         ),
-        body: ChangeNotifierProvider<SearchProvider>(
-            create: (_) => provider, child: _buildRestourant(context)));
+        body: _buildRestourant(context));
   }
 
   Widget _buildIos(BuildContext context) {
@@ -68,9 +65,9 @@ class _searchRestourantPageState extends State<searchRestourantPage> {
           ),
           transitionBetweenRoutes: false,
         ),
-        child: ChangeNotifierProvider<SearchProvider>(
-            create: (_) => provider, child: _buildRestourant(context)));
+        child: _buildRestourant(context));
   }
+
   @override
   Widget build(BuildContext context) {
     return PlatformWidget(androidBuilder: _buildAndroid, iosBuilder: _buildIos);
@@ -107,7 +104,7 @@ class _searchRestourantPageState extends State<searchRestourantPage> {
 
   void searchApi(String searchText) {
     if (_isSearch != null) {
-      this.stateProvider.searchAllRestourant(searchText);
+      stateProvider.searchAllRestourant(searchText);
     }
   }
 
@@ -119,13 +116,13 @@ class _searchRestourantPageState extends State<searchRestourantPage> {
 
   void _handleSearchEnd(icon, title) {
     setState(() {
-      this.Customicon = new Icon(
+      Customicon = const Icon(
         Icons.search,
         color: Colors.white,
       );
-      this.title = new Text(
+      this.title = const Text(
         "Search",
-        style: new TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white),
       );
       _isSearch = false;
       _searchController.clear();

@@ -1,10 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.restourant_app">
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+        <uses-permission android:name="android.permission.WAKE_LOCK"/>
    <application
         android:label="restourant_app"
         android:icon="@mipmap/ic_launcher">
-        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-        <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

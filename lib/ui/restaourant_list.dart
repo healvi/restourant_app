@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restourant_app/data/api/api_service.dart';
 import 'package:restourant_app/provider/restaourant_provider.dart';
 import 'package:restourant_app/ui/build_restourant_item.dart';
 import 'package:restourant_app/ui/search_restourant.dart';
+import 'package:restourant_app/ui/settings_page.dart';
 import 'package:restourant_app/widgets/platform_widget.dart';
 
 class RestourantListPage extends StatefulWidget {
@@ -48,12 +48,17 @@ class _RestourantListPageState extends State<RestourantListPage> {
                     return searchRestourantPage();
                   }));
                 },
-                icon: Icon(Icons.search, color: Colors.white))
+                icon: const Icon(Icons.search, color: Colors.white)),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SettingsPage();
+                  }));
+                },
+                icon: const Icon(Icons.settings, color: Colors.white))
           ],
         ),
-        body: ChangeNotifierProvider<RestaourantProvider>(
-            create: (_) => RestaourantProvider(apiService: ApiService()),
-            child: _buildRestourant(context)));
+        body: _buildRestourant(context));
   }
 
   Widget _buildIos(BuildContext context) {
@@ -62,9 +67,7 @@ class _RestourantListPageState extends State<RestourantListPage> {
           middle: Text('Food Hunter'),
           transitionBetweenRoutes: false,
         ),
-        child: ChangeNotifierProvider<RestaourantProvider>(
-            create: (_) => RestaourantProvider(apiService: ApiService()),
-            child: _buildRestourant(context)));
+        child: _buildRestourant(context));
   }
 
   @override

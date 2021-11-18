@@ -90,12 +90,7 @@ class _DetailsRestaurantState extends State<DetailsRestaurant> {
         appBar: AppBar(
           title: Text("restourant"),
         ),
-        body: ChangeNotifierProvider<RestaourantProviderDetails>(
-            create: (_) => RestaourantProviderDetails(
-                  apiService: ApiService(),
-                  id: restourantId,
-                ),
-            child: _buildDetail(context)));
+        body: _buildDetail(context));
   }
 
   Widget _buildIos(BuildContext context) {
@@ -104,11 +99,6 @@ class _DetailsRestaurantState extends State<DetailsRestaurant> {
           middle: Text('Food Hunter'),
           transitionBetweenRoutes: false,
         ),
-        child: ChangeNotifierProvider<RestaourantProviderDetails>(
-            create: (_) => RestaourantProviderDetails(
-                  apiService: ApiService(),
-                  id: restourantId,
-                ),
-            child: _buildDetail(context)));
+        child: _buildDetail(context));
   }
 }
