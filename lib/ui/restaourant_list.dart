@@ -17,23 +17,23 @@ class RestourantListPage extends StatefulWidget {
 
 class _RestourantListPageState extends State<RestourantListPage> {
   final NotificationHelper _notificationHelper = NotificationHelper();
-  @override
-  void initState() {
-    super.initState();
-    _notificationHelper
-        .configureSelectNotificationSubject(DetailsRestaurant.routeName);
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _notificationHelper
+  //       .configureSelectNotificationSubject(DetailsRestaurant.routeName);
+  // }
 
-  @override
-  void dispose() {
-    selectNotificationSubject.close();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   selectNotificationSubject.close();
+  //   super.dispose();
+  // }
 
   Widget _buildRestourant(BuildContext context) {
     return Consumer<RestaourantProvider>(builder: (context, state, _) {
       if (state.state == ResultState.loading) {
-        return const Center(child: CircularProgressIndicator());
+        return Center(child: CircularProgressIndicator());
       } else if (state.state == ResultState.Hasdata) {
         return BuildRestourantItem(restaurant: state.result.restaurants);
       } else if (state.state == ResultState.Nodata) {

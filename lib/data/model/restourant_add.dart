@@ -30,7 +30,7 @@ class RestaurantAdd {
         description: json["description"],
         pictureId: json["pictureId"],
         city: json["city"],
-        rating: json["rating"],
+        rating: json["rating"].toDouble(),
       );
 
   Map<String, dynamic> toJson() => {

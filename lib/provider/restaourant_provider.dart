@@ -37,7 +37,7 @@ class RestaourantProvider extends ChangeNotifier {
     } catch (e) {
       _state = ResultState.Error;
       notifyListeners();
-      return _message = 'Maaf Mungkin Internet anda salah';
+      return _message = 'Maaf Mungkin Internet anda salah $e';
     }
   }
 }
