@@ -1,10 +1,4 @@
-// To parse this JSON data, do
-//
-//     final restaurantList = restaurantListFromJson(jsonString);
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
-
 import 'package:restourant_app/data/model/restourant_add.dart';
 
 class RestaurantList {

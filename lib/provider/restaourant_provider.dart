@@ -24,6 +24,7 @@ class RestaourantProvider extends ChangeNotifier {
       _state = ResultState.loading;
       notifyListeners();
       final restourant = await apiService.listRestourant();
+      print(restourant.restaurants);
       if (restourant.restaurants.isEmpty) {
         _state = ResultState.Nodata;
         notifyListeners();
