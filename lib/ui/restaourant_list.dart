@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_app/data/api/api_service.dart';
-import 'package:restourant_app/data/model/restourant_add.dart';
-import 'package:restourant_app/data/model/restourant_list_data.dart';
 import 'package:restourant_app/provider/restaourant_provider.dart';
 import 'package:restourant_app/ui/build_restourant_item.dart';
 import 'package:restourant_app/ui/search_restourant.dart';
@@ -15,7 +13,6 @@ class RestourantListPage extends StatefulWidget {
 }
 
 class _RestourantListPageState extends State<RestourantListPage> {
-
   @override
   void initState() {
     super.initState();
